@@ -14,7 +14,7 @@ const Header = () => {
     </Fragment>
 
   return (
-    <div className='bg-pink-700 nav-section py-2 z-10 sticky'>
+    <div className='bg-pink-700 nav-section py-2 z-10 border-b-4 border-gray-500 sticky top-0'>
     <Container>
       <div className="navbar text-white">
         <div className="navbar-start">

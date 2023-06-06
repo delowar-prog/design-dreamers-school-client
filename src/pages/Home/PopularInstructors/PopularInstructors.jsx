@@ -1,8 +1,10 @@
-import React from 'react'
+import SectionTitle from "../../../components/SectionTitle/SectionTitle"
 
 const PopularInstructors = () => {
   return (
-    <div>PopularInstructors</div>
+    <div>
+      <SectionTitle heading={'Popular Instructors'} subHeading={'Justify our comments'}></SectionTitle>
+    </div>
   )
 }
 

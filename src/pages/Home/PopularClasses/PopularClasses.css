@@ -1,0 +1,9 @@
+
+.popular-classes-item{
+    overflow: hidden;
+    cursor: pointer;
+}
+.popular-classes-item:hover img{
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
