@@ -6,7 +6,7 @@ import './Slider.css'
 const Slider = () => {
   return (
     <div>
-      <Carousel autoPlay={true} infiniteLoop={true} interval={10000}>
+      <Carousel autoPlay={true} infiniteLoop={true} interval={3000}>
         <div className='relative'>
           <img src={slider1} />
           <div className='absolute top-28 lg:mx-20 lg:p-5 bg-white/[60%]'>
