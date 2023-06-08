@@ -26,7 +26,7 @@ const Register = () => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Your work has been saved',
+          title: 'Registration completed successfully',
           showConfirmButton: false,
           timer: 1000
         })

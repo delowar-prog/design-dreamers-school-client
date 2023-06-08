@@ -1,5 +1,5 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Lottie from "lottie-react";
 import animationLoginForm from "../../assets/140844-fashion-designer.json";
@@ -7,9 +7,16 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 const Login = () => {
+  const navigate=useNavigate()
   const {loginUserWithPass}=useContext(AuthContext)
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    console.log(data);
+    loginUserWithPass(data.email,data.password)
+    .then(result=>{
+      navigate('/')
+    })
+  }
   return (
     <div className='bg-base-100'>
       <Container>
