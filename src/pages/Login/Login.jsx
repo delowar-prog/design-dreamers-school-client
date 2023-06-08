@@ -19,26 +19,25 @@ const Login = () => {
               <div className="card flex-shrink-0 w-full shadow-3xl border">
                 <form onSubmit="">
                   <div className="card-body">
-    
                     <div className="form-control">
                       <label className="label">
-                        <span className="label-text">Email</span>
+                        <span className="label-text text-white">Email</span>
                       </label>
                       <input type="text" name="email" placeholder="email" className="input input-bordered" />
                     </div>
                     <div className="form-control">
                       <label className="label">
-                        <span className="label-text">Password</span>
+                        <span className="label-text text-white">Password</span>
                       </label>
                       <input type="text" name="password" placeholder="password" className="input input-bordered" />
                       <label className="label">
-                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                        <a href="#" className="label-text-alt link link-hover text-white">Forgot password?</a>
                       </label>
                     </div>
                     <div className="form-control mt-6">
                       <button type="submit" className="py-2 w-[100%] mx-auto text-white uppercase bg-cyan-500">Sign In</button>
                     </div>
-                    <p>Create an Account? <Link to="/register" className="link link-info">Sign up</Link></p>
+                    <p className="text-white">Create an Account? <Link to="/register" className="link link-info">Sign up</Link></p>
                   </div>
                 </form>
               </div>
