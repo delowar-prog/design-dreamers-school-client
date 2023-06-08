@@ -1,10 +1,45 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Lottie from "lottie-react";
 import animationLoginForm from "../../assets/140844-fashion-designer.json";
+import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const {registerUser,updateUserProfile,logoutUser}=useContext(AuthContext)
+  const navigate=useNavigate()
+  const [customError, setCustomError]=useState('')
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data =>{
+    if(data.password!==data.confirm){
+      setCustomError('Password & Confirm Password Not Matched')
+    }
+    registerUser(data.email,data.password)
+    .then(result=>{
+      const loggedUser=result.user 
+      console.log(loggedUser)
+      updateUserProfile(data.name,data.photo)
+      .then(result=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1000
+        })
+        logoutUser().then(()=>{
+          navigate('/login')
+      })
+      })
+    })
+    .catch(error=>{
+      setCustomError(error.message)
+    })
+
+  } 
   return (
     <div className='bg-base-100'>
       <Container>
@@ -14,25 +49,27 @@ const Register = () => {
               <Lottie animationData={animationLoginForm} loop={true} />
             </div>
           </div>
-          <div className="bg-pink-600 lg:w-[80%]">
+          <div className="bg-slate-800 lg:w-[80%]">
             <div className="hero-content flex-col">
               <h2 className='text-3xl font-bold text-white mt-5'>Register Here</h2>
               <div className="card flex-shrink-0 w-full shadow-3xl border">
-                <form onSubmit="">
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="card-body text-white">
 
                     <div className="flex gap-5">
                       <div className="form-control w-full">
                         <label className="label">
-                          <span className="label-text text-white">Name</span>
+                          <span className="label-text text-white">Name<span className="font-bold text-red-500"> *</span></span>
                         </label>
-                        <input type="text" name="name" placeholder="name" className="input input-bordered" />
+                        <input type="text" {...register("name", { required: true })}  placeholder="name" className="input input-bordered text-gray-500" />
+                        {errors.name && <span className="text-red-500">Name is required</span>}
                       </div>
                       <div className="form-control w-full">
                         <label className="label">
-                          <span className="label-text text-white">Email</span>
+                          <span className="label-text text-white">Email <span className="font-bold text-red-500"> *</span></span>
                         </label>
-                        <input type="text" name="email" placeholder="email" className="input input-bordered" />
+                        <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered text-gray-500" />
+                        {errors.email && <span className="text-red-500">Email is required</span>}
                       </div>
                     </div>
                     <div className="flex gap-5">
@@ -40,61 +77,78 @@ const Register = () => {
                         <label className="label">
                           <span className="label-text text-white">Phone</span>
                         </label>
-                        <input type="text" name="phone" placeholder="phone" className="input input-bordered" />
+                        <input type="text" {...register("phone")} placeholder="phone" className="input input-bordered text-gray-500" />
                       </div>
                       <div className="form-control w-full">
                         <label className="label">
                           <span className="label-text text-white">Address</span>
                         </label>
-                        <input type="text" name="address" placeholder="address" className="input input-bordered" />
+                        <input type="text" {...register("address")} placeholder="address" className="input input-bordered text-gray-500" />
                       </div>
                     </div>
                     <div className="flex gap-5">
                       <div className="form-control w-full">
                         <label className="label">
-                          <span className="label-text text-white">Password</span>
+                          <span className="label-text text-white">Password <span className="font-bold text-red-500"> *</span></span>
                         </label>
-                        <input type="password" name="password" placeholder="password" className="input input-bordered" />
+            
+                        <input type="password" {...register("password", 
+                        { required: true, 
+                          minLength:6,
+                          pattern: {
+                            value: /(?=.*[a-z])[a-z0-9]/,
+                            message: 'Password holds at least one letter & one digit, Capital letter & Special characters are not allowed.',
+                          },
+                        })} placeholder="password" className="input input-bordered text-gray-500" />
+                        {errors.password?.type === 'required' && <p role="alert" className="text-red-500">Password is required</p>}
+                        {errors.password?.type === 'minLength' && <p role="alert" className="text-red-500">Password is at least 6 characters</p>}
+                        {errors.password?.type === 'pattern' && <p role="alert" className="text-red-500">{errors.password.message}</p>}
                         <label className="label">
                           <a href="#" className="label-text-alt link link-hover text-white">Forgot password?</a>
                         </label>
                       </div>
                       <div className="form-control w-full">
                         <label className="label">
-                          <span className="label-text text-white">Confirm Password</span>
+                          <span className="label-text text-white">Confirm Password <span className="font-bold text-red-500"> *</span></span>
                         </label>
-                        <input type="password" name="confirm" placeholder="confirm password" className="input input-bordered" />
+                        <input type="password" {...register("confirm", { required: true })} placeholder="confirm password" className="input input-bordered text-gray-500" />
+                        {errors.confirm && <span className="text-red-500">Confirm Password is required</span>}
+                        {
+                          customError ? <span className="text-red-500">{customError}</span>:''
+                        }
                       </div>
                     </div>
                     <div className="flex gap-5">
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text text-white">Photo Url</span>
+                          <span className="label-text text-white">Photo Url <span className="font-bold text-red-500"> *</span></span>
                         </label>
-                        <input type="file" name="photo" />
+                        <input type="text" {...register("photo", { required: true })} />
+                        {errors.photo && <span className="text-red-500">Photo url is required</span>}
                       </div>
                       <div>
                         <label className="label">
-                          <span className="label-text text-white">Gender</span>
+                          <span className="label-text text-white">Gender <span className="font-bold text-red-500"> *</span></span>
                         </label>
                         <span className="flex items-center gap-2">
-                          <input type="radio" name="radio-3" className="radio radio-accent" /> Male
-                          <input type="radio" name="radio-3" className="radio radio-accent" />Female
-                          <input type="radio" name="radio-3" className="radio radio-accent" />Third
+                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Male'}/> Male
+                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Female'}/>Female
+                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Third'}/>Third
                         </span>
+                        {errors.gender && <span className="text-red-500">Gender is required</span>}
                       </div>
                     </div>
                     <div className="form-control mt-6">
-                      <button type="submit" className="py-2 w-[100%] mx-auto text-white uppercase bg-cyan-500">Sign In</button>
+                      <button type="submit" className="py-2 w-[100%] mx-auto text-white uppercase bg-cyan-500">Sign Up</button>
                     </div>
                     <p>If already have an Account? <Link to="/login" className="link link-info">Login</Link></p>
                   </div>
                 </form>
               </div>
               <div className="divider">OR</div>
-              <button onClick="" className="btn btn-outline border-gray-400 hover:bg-gray-300 hover:text-gray-800 gap-2">
+              <button type="submit" className="btn btn-outline border-gray-400 hover:bg-gray-300 hover:text-gray-800 gap-2">
                 <FcGoogle className='text-xl'></FcGoogle>
-                Continue with Google
+                <span className="text-red-500">Continue with Google</span>
               </button>
             </div>
           </div>

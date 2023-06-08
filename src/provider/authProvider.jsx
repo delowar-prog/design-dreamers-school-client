@@ -1,55 +1,49 @@
 import { createContext, useEffect, useState } from "react"
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { app } from "../firebase/firebase.config";
-import axios from "axios";
+import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null)
-const authProvider = ({ children }) => {
+const AuthProvider = ({children}) => {
     const auth = getAuth(app);
     const [user, setUser] = useState('')
     const [loading, setLoading] = useState(true)
-
+    
+    //create user with password
     const registerUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
-
-    const loginUserWithPass = (email, password) => {
-        setLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-
+    //update profile
     const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
     }
 
+    //login user with password
+    const loginUserWithPass = (email, password) => {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    //login with google
     const googleProvider = new GoogleAuthProvider()
     const loginWithGoogle = () => {
         return signInWithPopup(auth, googleProvider)
     }
 
+    //logout user
     const logoutUser = () => {
         setLoading(true)
         return signOut(auth)
     }
-    //set Observer
+
+    //set observer
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             //get & set into localstorage
-            if (currentUser) {
-                axios.post(`http://localhost:5000/jwt`, {
-                    email: currentUser.email
-                }).then(data => {
-                        localStorage.setItem('access_token', data.data.token)
-                        setLoading(false)
-                    })
-            }else{
-                localStorage.removeItem('access_token')
-            }
-            
+            setLoading(false)
         })
         return () => {
             return unSubscribe()
@@ -60,10 +54,10 @@ const authProvider = ({ children }) => {
         user,
         loading,
         registerUser,
+        updateUserProfile,
         loginUserWithPass,
-        logoutUser,
         loginWithGoogle,
-        updateUserProfile
+        logoutUser
     }
     return (
         <AuthContext.Provider value={authInfo}>
@@ -72,4 +66,4 @@ const authProvider = ({ children }) => {
     )
 }
 
-export default authProvider
+export default AuthProvider
