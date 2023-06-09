@@ -1,0 +1,109 @@
+[
+    {
+      "name": "Jessica Thompson",
+      "image": "https://i.ibb.co/m0LJnCg/13.jpg",
+      "email": "jessica@example.com",
+      "taken_class": 2,
+      "classes_name": [
+        "Fashion Sketching and Illustration",
+        "Fashion Design Principles"
+      ]
+    },
+    {
+      "name": "Alexandra Williams",
+      "image": "https://i.ibb.co/VCFwNPg/5.webp",
+      "email": "alexandra@example.com",
+      "taken_class": 3,
+      "classes_name": [
+        "Fashion Design Principles",
+        "Pattern Making and Draping",
+        "Fashion Illustration Basics"
+      ]
+    },
+    {
+      "name": "Michael Johnson",
+      "image": "https://i.ibb.co/TYnQ3XQ/6.jpg",
+      "email": "michael@example.com",
+      "taken_class": 3,
+      "classes_name": [
+        "Pattern Making and Draping",
+        "Fashion Illustration Basics",
+        "Advanced Draping Techniques"
+      ]
+    },
+    {
+      "name": "Sophia Adams",
+      "image": "https://i.ibb.co/m0LJnCg/13.jpg",
+      "email": "sophia@example.com",
+      "taken_class": 1,
+      "classes_name": [
+        "Fashion Illustration Basics"
+      ]
+    },
+    {
+      "name": "Emily Collins",
+      "image": "https://i.ibb.co/xhLS0Z3/7.webp",
+      "email": "emily@example.com",
+      "taken_class": 2,
+      "classes_name": [
+        "Fashion Illustration Masterclass",
+        "Introduction to Fashion Design"
+      ]
+    },
+    {
+      "name": "David Martinez",
+      "image": "https://i.ibb.co/1r8jwVs/8.jpg",
+      "email": "david@example.com",
+      "taken_class": 4,
+      "classes_name": [
+        "Introduction to Fashion Design",
+        "Creative Pattern Making",
+        "Fashion Sketching Techniques",
+        "Draping and Fabric Manipulation"
+      ]
+    },
+    {
+      "name": "Olivia Walker",
+      "image": "https://i.ibb.co/TYnQ3XQ/6.jpg",
+      "email": "olivia@example.com",
+      "taken_class": 1,
+      "classes_name": [
+        "Creative Pattern Making"
+      ]
+    },
+    {
+      "name": "Daniel Brown",
+      "image": "https://i.ibb.co/Fw6PHX1/9.jpg",
+      "email": "daniel@example.com",
+      "taken_class": 3,
+      "classes_name": [
+        "Fashion Sketching Techniques",
+        "Draping and Fabric Manipulation",
+        "Fashion Design Fundamentals"
+      ]
+    },
+    {
+      "name": "Sophie White",
+      "image": "https://i.ibb.co/qksQTQ1/10.jpg",
+      "email": "sophie@example.com",
+      "taken_class": 2,
+      "classes_name": [
+        "Draping and Fabric Manipulation",
+        "Fashion Design Fundamentals"
+      ]
+    },
+    {
+      "name": "Matthew Taylor",
+      "image": "https://i.ibb.co/Wg878RS/11.jpg",
+      "email": "matthew@example.com",
+      "taken_class": 5,
+      "classes_name": [
+        "Fashion Design Fundamentals",
+        "Introduction to Pattern Making",
+        "Fashion Illustration Workshop",
+        "Creative Draping Techniques",
+        "Fashion Design Studio"
+      ]
+    }
+  ]
+  
