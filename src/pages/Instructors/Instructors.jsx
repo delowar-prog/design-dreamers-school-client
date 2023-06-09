@@ -5,9 +5,11 @@ import img1 from '../../assets/instructors/1.jpg'
 import img2 from '../../assets/instructors/2.jpg'
 import img3 from '../../assets/instructors/3.jpg'
 import './Instructors.css'
+import { Helmet } from 'react-helmet-async'
 const Instructors = () => {
     return (
         <div className='bg-pink-600 pb-20'>
+            <Helmet><title>SCFDS || instructors</title></Helmet>
             <SectionTitle heading={'Our Instructors'} subHeading={'Join to justify us'}></SectionTitle>
             <Container>
                 <div className='grid lg:grid-cols-3 gap-5'>
@@ -76,7 +78,7 @@ const Instructors = () => {
                             <button className='bg-sky-500 my-5 py-1 px-5 text-white hover:bg-sky-600 uppercase'>See the Classes</button>
                         </div>
                     </div>
-                   
+
                 </div>
             </Container>
         </div>

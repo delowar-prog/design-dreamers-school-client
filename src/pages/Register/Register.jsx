@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const {registerUser,updateUserProfile,logoutUser}=useContext(AuthContext)
@@ -42,6 +43,7 @@ const Register = () => {
   } 
   return (
     <div className='bg-base-100'>
+    <Helmet><title>SCFDS || Register</title></Helmet>
       <Container>
         <div className='flex flex-col lg:flex-row justify-around items-center gap-20' data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
           <div className="lg:w-[40%]">

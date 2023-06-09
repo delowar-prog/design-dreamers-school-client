@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   const navigate=useNavigate()
   const {loginUserWithPass}=useContext(AuthContext)
@@ -20,6 +21,7 @@ const Login = () => {
   }
   return (
     <div className='bg-base-100'>
+    <Helmet><title>SCFDS || Login</title></Helmet>
       <Container>
         <div className='flex flex-col lg:flex-row justify-around items-center gap-20' data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
           <div className="lg:w-[40%]">
