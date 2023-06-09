@@ -1,0 +1,143 @@
+[
+    {
+      "name": "Fashion Sketching and Illustration",
+      "image": "https://example.com/sketching.jpg",
+      "instructor_name": "Jessica Thompson",
+      "available_seats": 15,
+      "price": 150
+    },
+    {
+      "name": "Fashion Design Principles",
+      "image": "https://example.com/design_principles.jpg",
+      "instructor_name": "Alexandra Williams",
+      "available_seats": 10,
+      "price": 200
+    },
+    {
+      "name": "Pattern Making and Draping",
+      "image": "https://example.com/pattern_making.jpg",
+      "instructor_name": "Michael Johnson",
+      "available_seats": 8,
+      "price": 250
+    },
+    {
+      "name": "Fashion Illustration Basics",
+      "image": "https://example.com/illustration_basics.jpg",
+      "instructor_name": "Sophia Adams",
+      "available_seats": 12,
+      "price": 180
+    },
+    {
+      "name": "Advanced Draping Techniques",
+      "image": "https://example.com/advanced_draping.jpg",
+      "instructor_name": "Robert Anderson",
+      "available_seats": 5,
+      "price": 300
+    },
+    {
+      "name": "Fashion Illustration Masterclass",
+      "image": "https://example.com/illustration_masterclass.jpg",
+      "instructor_name": "Emily Collins",
+      "available_seats": 20,
+      "price": 220
+    },
+    {
+      "name": "Introduction to Fashion Design",
+      "image": "https://example.com/introduction_fashion.jpg",
+      "instructor_name": "David Martinez",
+      "available_seats": 15,
+      "price": 190
+    },
+    {
+      "name": "Creative Pattern Making",
+      "image": "https://example.com/creative_pattern.jpg",
+      "instructor_name": "Olivia Walker",
+      "available_seats": 8,
+      "price": 280
+    },
+    {
+      "name": "Fashion Sketching Techniques",
+      "image": "https://example.com/sketching_techniques.jpg",
+      "instructor_name": "Daniel Brown",
+      "available_seats": 12,
+      "price": 170
+    },
+    {
+      "name": "Draping and Fabric Manipulation",
+      "image": "https://example.com/fabric_manipulation.jpg",
+      "instructor_name": "Sophie White",
+      "available_seats": 6,
+      "price": 320
+    },
+    {
+      "name": "Fashion Design Fundamentals",
+      "image": "https://example.com/design_fundamentals.jpg",
+      "instructor_name": "Matthew Taylor",
+      "available_seats": 18,
+      "price": 210
+    },
+    {
+      "name": "Introduction to Pattern Making",
+      "image": "https://example.com/introduction_pattern.jpg",
+      "instructor_name": "Isabella Wilson",
+      "available_seats": 10,
+      "price": 230
+    },
+    {
+      "name": "Fashion Illustration Workshop",
+      "image": "https://example.com/illustration_workshop.jpg",
+      "instructor_name": "Ryan Davis",
+      "available_seats": 15,
+      "price": 200
+    },
+    {
+      "name": "Creative Draping Techniques",
+      "image": "https://example.com/creative_draping.jpg",
+      "instructor_name": "Emma Thompson",
+      "available_seats": 8,
+      "price": 270
+    },
+    {
+      "name": "Fashion Design Studio",
+      "image": "https://example.com/design_studio.jpg",
+      "instructor_name": "Jacob Harris",
+      "available_seats": 6,
+      "price": 350
+    },
+    {
+      "name": "Fashion Sketching for Beginners",
+      "image": "https://example.com/sketching_beginners.jpg",
+      "instructor_name": "Chloe Wilson",
+      "available_seats": 12,
+      "price": 160
+    },
+    {
+      "name": "Advanced Fashion Design Principles",
+      "image": "https://example.com/advanced_design_principles.jpg",
+      "instructor_name": "Lucas Anderson",
+      "available_seats": 10,
+      "price": 250
+    },
+    {
+      "name": "Advanced Pattern Making Techniques",
+      "image": "https://example.com/advanced_pattern.jpg",
+      "instructor_name": "Sophia Johnson",
+      "available_seats": 7,
+      "price": 290
+    },
+    {
+      "name": "Fashion Illustration Express",
+      "image": "https://example.com/illustration_express.jpg",
+      "instructor_name": "Nathan Roberts",
+      "available_seats": 15,
+      "price": 180
+    },
+    {
+      "name": "Experimental Draping Workshop",
+      "image": "https://example.com/experimental_draping.jpg",
+      "instructor_name": "Mia Turner",
+      "available_seats": 5,
+      "price": 320
+    }
+  ]
+  
