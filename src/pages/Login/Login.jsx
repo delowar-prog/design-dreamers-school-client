@@ -1,4 +1,4 @@
-import { FcGoogle } from "react-icons/fc";
+
 import { Link, useNavigate } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Lottie from "lottie-react";
@@ -6,6 +6,7 @@ import animationLoginForm from "../../assets/140844-fashion-designer.json";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import SocialLogin from "./SocialLogin";
 const Login = () => {
   const navigate=useNavigate()
   const {loginUserWithPass}=useContext(AuthContext)
@@ -57,10 +58,7 @@ const Login = () => {
                 </form>
               </div>
               <div className="divider">OR</div>
-              <button onClick="" className="btn btn-outline border-gray-400 hover:bg-gray-300 hover:text-gray-800 gap-2">
-                <FcGoogle className='text-xl'></FcGoogle>
-                <span className="text-red-500">Continue with Google</span>
-              </button>
+             <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>
