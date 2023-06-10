@@ -17,7 +17,7 @@ const Classes = () => {
   },[])
 
   const handleSelectClass=(item)=>{
-    const {_id,image,name,price}=item
+    const {_id,image,name,price,instructor_name}=item
     if(!user){
       Swal.fire({
         title: 'Login to select class',
@@ -29,7 +29,7 @@ const Classes = () => {
         }
       })
     }else{
-        const selectedClass={classId:_id,image,name,price,email:user?.email} 
+        const selectedClass={classId:_id,image,name,instructor_name,price,email:user?.email} 
         fetch(`http://localhost:5000/selected/classes`,{
           method:'POST',
           headers:{

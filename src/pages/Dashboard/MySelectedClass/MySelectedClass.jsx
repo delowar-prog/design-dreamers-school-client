@@ -1,8 +1,45 @@
 import React, { Fragment } from 'react'
 import SectionTitle from '../../../components/SectionTitle/SectionTitle'
 import SectionTitleDeshboard from '../../../components/SectionTitle/SectionTitleDeshboard'
+import useSelectedClass from '../../../hooks/useSelectedClass'
+import { FaTrash } from "react-icons/fa";
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const MySelectedClass = () => {
+  const [selectedClass,refetch] = useSelectedClass()
+  const totalCost=selectedClass.reduce((sum,item)=>item.price+sum,0)
+
+  const handleDeleteClass=item=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Delete This Selected Class!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+       fetch(`http://localhost:5000/selected/classes/${item._id}`,
+       {
+        method:"DELETE",
+       })
+       .then(res=>res.json())
+       .then(data=>{
+        if(data.deletedCount>0){
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+          refetch()
+        }
+       })
+      }
+    })
+  }
+ 
   return (
     <Fragment>
       <div className='w-full'>
@@ -23,38 +60,26 @@ const MySelectedClass = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-                <td>Delete</td>
-              </tr>
-              {/* row 2 */}
-              <tr>
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Purple</td>
-                <td>Delete</td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>Red</td>
-                <td>Delete</td>
-              </tr>
+              {
+                selectedClass.map((item,index) =><Fragment key={item._id}>
+                  <tr>
+                    <th>{index+1}</th>
+                    <td>{item.name}</td>
+                    <td>{item.instructor_name}</td>
+                    <td>$ {item.price}</td>
+                    <td><button onClick={()=>handleDeleteClass(item)} className='btn btn-primary btn-sm'><FaTrash className='text-lg text-red-500'></FaTrash></button></td>
+                  </tr>
+                </Fragment>)
+              }
             </tbody>
           </table>
         </div>
         <br></br>
         <hr className='border border-gray-300'></hr>
-        <div className='w-[30%] space-y-3 border border-gray-400 rounded p-5 my-5 float-right'>
-            <h2 className='text-xl'>Total Selected Class : </h2>
-            <h2 className='text-xl'>Total Cost : </h2>
-            <button className='btn btn-error'>Pay Now</button>
+        <div className='w-[40%] space-y-3 border border-gray-400 rounded p-5 my-5 float-right'>
+          <h2 className='text-xl'>Total Selected Class : {selectedClass.length} </h2>
+          <h2 className='text-xl'>Total Cost : $ {totalCost}</h2>
+          <button className='btn btn-success'>Pay Now</button>
         </div>
       </div>
     </Fragment>
