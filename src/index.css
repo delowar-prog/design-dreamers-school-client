@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.drawer-side a{
+    background-color:inherit;
+    color:#fff;
+}
+.drawer-side a.active{
+    color: rgb(229, 66, 37);
+}

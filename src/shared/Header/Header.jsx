@@ -16,7 +16,7 @@ const Header = () => {
       <li><Link to="/classes" className='hover:bg-inherit'>Classes</Link></li>
       {
         user ? <Fragment>
-        <li><Link to="/dashboard" className='hover:bg-inherit'>Dashboard</Link></li>
+        <li><Link to="/dashboard/myClass" className='hover:bg-inherit'>Dashboard</Link></li>
         <li className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
