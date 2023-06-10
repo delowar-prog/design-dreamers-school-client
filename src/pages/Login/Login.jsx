@@ -1,5 +1,4 @@
-
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Lottie from "lottie-react";
 import animationLoginForm from "../../assets/140844-fashion-designer.json";
@@ -8,15 +7,18 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 import { Helmet } from "react-helmet-async";
+
 const Login = () => {
   const navigate=useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   const {loginUserWithPass}=useContext(AuthContext)
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
     console.log(data);
     loginUserWithPass(data.email,data.password)
     .then(result=>{
-      navigate('/')
+      return navigate(from, { replace: true })
     })
   }
   return (
