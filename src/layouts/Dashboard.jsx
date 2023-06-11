@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { GrSelect } from "react-icons/gr";
 import { FaHome } from "react-icons/fa";
@@ -7,6 +7,9 @@ import { MdOutlineClass } from "react-icons/md";
 import { FcManager } from "react-icons/fc";
 import Header from "../shared/Header/Header"
 const Dashboard = () => {
+
+    const isAdmin = true;
+    const isInstructor = false;
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -23,9 +26,30 @@ const Dashboard = () => {
                 <h1 className='text-xl text-gray-300 uppercase font-bold text-center my-5'>Dashboard</h1>
                 <ul className="menu p-4 w-64 h-full text-base-content text-lg">
                     {/* Sidebar content here */}
-                    <li><NavLink to="/dashboard/home"><FaHome></FaHome> User Home</NavLink></li>
-                    <li><NavLink to="/dashboard/myClass"><GrSelect></GrSelect> My Selected Classes</NavLink></li>
-                    <li><NavLink to="/dashboard/home"><IoIosApps></IoIosApps> My Enroll Classes</NavLink></li>
+                    {
+                        isAdmin && <Fragment>
+                            <li><NavLink to="/dashboard/home"><FaHome></FaHome> Admin Home</NavLink></li>
+                            <li><NavLink to="/dashboard/manageUser"><GrSelect></GrSelect> Manage User</NavLink></li>
+                            <li><NavLink to="/dashboard/ManageClasses"><IoIosApps></IoIosApps> Manage Classes</NavLink></li>
+                        </Fragment>
+                    }
+                    {
+                        isInstructor && <Fragment>
+                            <li><NavLink to="/dashboard/home"><FaHome></FaHome> Instructor Home</NavLink></li>
+                            <li><NavLink to="/dashboard/myClass"><GrSelect></GrSelect> Add a Class</NavLink></li>
+                            <li><NavLink to="/dashboard/home"><IoIosApps></IoIosApps> My Classes</NavLink></li>
+                        </Fragment>
+                    }
+                    {
+                       isAdmin||isInstructor||<Fragment>
+                            <li><NavLink to="/dashboard/home"><FaHome></FaHome> User Home</NavLink></li>
+                            <li><NavLink to="/dashboard/myClass"><GrSelect></GrSelect> My Selected Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/home"><IoIosApps></IoIosApps> My Enroll Classes</NavLink></li>
+                        </Fragment>
+                    }
+
+
+
                     <br></br>
                     <hr></hr>
                     <br></br>

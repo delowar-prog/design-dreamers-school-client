@@ -12,8 +12,18 @@ const SocialLogin = () => {
         loginWithGoogle()
             .then(result => {
                 const loggedUser = result.user
-                console.log(loggedUser)
-                return navigate(from, { replace: true })
+                const userData = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                       return navigate(from, { replace: true })
+                    })
             })
             .catch(error => console.log(error.message))
     }

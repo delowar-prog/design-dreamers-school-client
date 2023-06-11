@@ -10,40 +10,54 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 
 const Register = () => {
-  const {registerUser,updateUserProfile,logoutUser}=useContext(AuthContext)
-  const navigate=useNavigate()
-  const [customError, setCustomError]=useState('')
+  const { registerUser, updateUserProfile, logoutUser } = useContext(AuthContext)
+  const navigate = useNavigate()
+  const [customError, setCustomError] = useState('')
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data =>{
-    if(data.password!==data.confirm){
+  const onSubmit = data => {
+    if (data.password !== data.confirm) {
       setCustomError('Password & Confirm Password Not Matched')
     }
-    registerUser(data.email,data.password)
-    .then(result=>{
-      const loggedUser=result.user 
-      console.log(loggedUser)
-      updateUserProfile(data.name,data.photo)
-      .then(result=>{
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Registration completed successfully',
-          showConfirmButton: false,
-          timer: 1000
-        })
-        logoutUser().then(()=>{
-          navigate('/login')
-      })
-      })
-    })
-    .catch(error=>{
-      setCustomError(error.message)
-    })
+    registerUser(data.email, data.password)
+      .then(result => {
+        const loggedUser = result.user
+        console.log(loggedUser)
+        updateUserProfile(data.name, data.photo)
+          .then(result => {
+            const userData = { name: data.name, email: data.email }
+            fetch('http://localhost:5000/users', {
+              method: "POST",
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify(userData)
+            })
+              .then(res => res.json())
+              .then(data => {
+                if (data.insertedId) {
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registration completed successfully',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
+                  logoutUser().then(() => {
+                    navigate('/login')
+                  })
+                }
+              })
 
-  } 
+          })
+      })
+      .catch(error => {
+        setCustomError(error.message)
+      })
+
+  }
   return (
     <div className='bg-base-100'>
-    <Helmet><title>SCFDS || Register</title></Helmet>
+      <Helmet><title>SCFDS || Register</title></Helmet>
       <Container>
         <div className='flex flex-col lg:flex-row justify-around items-center gap-20' data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
           <div className="lg:w-[40%]">
@@ -63,7 +77,7 @@ const Register = () => {
                         <label className="label">
                           <span className="label-text text-white">Name<span className="font-bold text-red-500"> *</span></span>
                         </label>
-                        <input type="text" {...register("name", { required: true })}  placeholder="name" className="input input-bordered text-gray-500" />
+                        <input type="text" {...register("name", { required: true })} placeholder="name" className="input input-bordered text-gray-500" />
                         {errors.name && <span className="text-red-500">Name is required</span>}
                       </div>
                       <div className="form-control w-full">
@@ -93,15 +107,16 @@ const Register = () => {
                         <label className="label">
                           <span className="label-text text-white">Password <span className="font-bold text-red-500"> *</span></span>
                         </label>
-            
-                        <input type="password" {...register("password", 
-                        { required: true, 
-                          minLength:6,
-                          pattern: {
-                            value: /(?=.*[a-z])[a-z0-9]/,
-                            message: 'Password holds at least one letter & one digit, Capital letter & Special characters are not allowed.',
-                          },
-                        })} placeholder="password" className="input input-bordered text-gray-500" />
+
+                        <input type="password" {...register("password",
+                          {
+                            required: true,
+                            minLength: 6,
+                            pattern: {
+                              value: /(?=.*[a-z])[a-z0-9]/,
+                              message: 'Password holds at least one letter & one digit, Capital letter & Special characters are not allowed.',
+                            },
+                          })} placeholder="password" className="input input-bordered text-gray-500" />
                         {errors.password?.type === 'required' && <p role="alert" className="text-red-500">Password is required</p>}
                         {errors.password?.type === 'minLength' && <p role="alert" className="text-red-500">Password is at least 6 characters</p>}
                         {errors.password?.type === 'pattern' && <p role="alert" className="text-red-500">{errors.password.message}</p>}
@@ -116,7 +131,7 @@ const Register = () => {
                         <input type="password" {...register("confirm", { required: true })} placeholder="confirm password" className="input input-bordered text-gray-500" />
                         {errors.confirm && <span className="text-red-500">Confirm Password is required</span>}
                         {
-                          customError ? <span className="text-red-500">{customError}</span>:''
+                          customError ? <span className="text-red-500">{customError}</span> : ''
                         }
                       </div>
                     </div>
@@ -133,9 +148,9 @@ const Register = () => {
                           <span className="label-text text-white">Gender <span className="font-bold text-red-500"> *</span></span>
                         </label>
                         <span className="flex items-center gap-2">
-                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Male'}/> Male
-                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Female'}/>Female
-                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Third'}/>Third
+                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Male'} /> Male
+                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Female'} />Female
+                          <input type="radio" {...register("gender", { required: true })} className="radio radio-accent radio-xs" value={'Third'} />Third
                         </span>
                         {errors.gender && <span className="text-red-500">Gender is required</span>}
                       </div>
