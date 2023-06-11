@@ -5,10 +5,11 @@ import { FaHome } from "react-icons/fa";
 import { IoIosApps } from "react-icons/io";
 import { MdOutlineClass } from "react-icons/md";
 import { FcManager } from "react-icons/fc";
-import Header from "../shared/Header/Header"
+import useAdmin from '../hooks/useAdmin';
 const Dashboard = () => {
 
-    const isAdmin = true;
+    // const isAdmin = true;
+    const [isAdmin]=useAdmin()
     const isInstructor = false;
     return (
         <div className="drawer lg:drawer-open">

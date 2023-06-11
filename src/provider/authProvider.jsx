@@ -30,6 +30,7 @@ const AuthProvider = ({children}) => {
     //login with google
     const googleProvider = new GoogleAuthProvider()
     const loginWithGoogle = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
@@ -54,6 +55,7 @@ const AuthProvider = ({children}) => {
                 })
             }else{
                 localStorage.removeItem('user_access_key')
+                setLoading(false)
             }
             
         })
