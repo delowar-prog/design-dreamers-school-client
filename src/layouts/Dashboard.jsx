@@ -6,11 +6,12 @@ import { IoIosApps } from "react-icons/io";
 import { MdOutlineClass } from "react-icons/md";
 import { FcManager } from "react-icons/fc";
 import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
 const Dashboard = () => {
 
     // const isAdmin = true;
     const [isAdmin]=useAdmin()
-    const isInstructor = false;
+    const [isInstructor] = useInstructor();
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -37,7 +38,7 @@ const Dashboard = () => {
                     {
                         isInstructor && <Fragment>
                             <li><NavLink to="/dashboard/home"><FaHome></FaHome> Instructor Home</NavLink></li>
-                            <li><NavLink to="/dashboard/myClass"><GrSelect></GrSelect> Add a Class</NavLink></li>
+                            <li><NavLink to="/dashboard/addClass"><GrSelect></GrSelect> Add a Class</NavLink></li>
                             <li><NavLink to="/dashboard/home"><IoIosApps></IoIosApps> My Classes</NavLink></li>
                         </Fragment>
                     }

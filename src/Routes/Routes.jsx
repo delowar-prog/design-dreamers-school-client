@@ -11,6 +11,7 @@ import Dashboard from "../layouts/Dashboard";
 import MySelectedClass from "../pages/Dashboard/MySelectedClass/MySelectedClass";
 import DashboardHome from "../pages/Dashboard/Home/DashboardHome";
 import ManageUser from "../pages/Dashboard/ManageUser/ManageUser";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path:'manageUser',
         element:<ManageUser></ManageUser>
+      },
+      {
+        path:'addClass',
+        element:<AddClass></AddClass>
       }
     ]
   }

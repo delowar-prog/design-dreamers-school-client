@@ -1,16 +1,20 @@
-import { Fragment } from "react"
+import { Fragment, useContext } from "react"
 import SectionTitleDeshboard from "../../../components/SectionTitle/SectionTitleDeshboard"
 import { useQuery } from "@tanstack/react-query"
 import Swal from "sweetalert2"
 import useAxiosSecure from "../../../hooks/useAxiosSecure"
+import { AuthContext } from "../../../Provider/AuthProvider"
 
 const ManageUser = () => {
     const [axiosSecure] = useAxiosSecure()
     const token=localStorage.getItem('user_access_key')
-    const { data: users = [], refetch } = useQuery(['alluser'], async () => {
+    const { data: users = [], refetch } = useQuery({
+        queryKey:['alluser'],
+        queryFn: async () => {
         const res = await axiosSecure(`/users`)
         return res.data
-    })
+    }
+})
 
     const handleMakeAdmin = (user) => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
