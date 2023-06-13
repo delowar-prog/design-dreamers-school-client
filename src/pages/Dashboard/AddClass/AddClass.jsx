@@ -7,6 +7,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 const AddClass = () => {
     const { user } = useContext(AuthContext)
+   
     const [axiosSecure]=useAxiosSecure()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const image_upload_token = import.meta.env.VITE_image_upload_key
@@ -24,9 +25,8 @@ const AddClass = () => {
                 if (resImg.success) {
                     const { name, seats, price,} = data
                     const imgUrl = resImg.data.display_url
-                    const newClass = { name, instructor_name:user.displayName, email:user.email, available_seats:seats, price: parseFloat(price), image: imgUrl }
-                    console.log(newClass)
-                    axiosSecure.post(`/classes`, newClass)
+                    const newClass = { name, instructor_name:user.displayName, email:user.email, available_seats:parseInt(seats), price: parseFloat(price), image: imgUrl }
+                          axiosSecure.post(`/classes`, newClass)
                         .then(data => {
                             if (data.data.insertedId) {
                                 Swal.fire({

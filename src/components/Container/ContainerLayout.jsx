@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Container = ({children}) => {
+const ContainerLayout = ({children}) => {
   return (
     <div className='max-w-[2520px] mx-auto xl:px-20 md:px-10 sm-px-5 px-3'>
         {children}
@@ -8,4 +8,4 @@ const Container = ({children}) => {
   )
 }
 
-export default Container
+export default ContainerLayout

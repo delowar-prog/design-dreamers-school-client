@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react'
-import Container from '../../components/Container/Container'
+import ContainerLayout from '../../components/Container/ContainerLayout'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../provider/AuthProvider'
 
@@ -16,7 +16,7 @@ const Header = () => {
       <li><Link to="/classes" className='hover:bg-inherit'>Classes</Link></li>
       {
         user ? <Fragment>
-        <li><Link to="/dashboard/myClass" className='hover:bg-inherit'>Dashboard</Link></li>
+        <li><Link to="/dashboard/home" className='hover:bg-inherit'>Dashboard</Link></li>
         <li className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <div className='bg-pink-700 nav-section py-2 z-10 border-b-4 border-gray-500 sticky top-0'>
-      <Container>
+      <ContainerLayout>
         <div className="navbar text-white">
           <div className="navbar-start">
             <div className="dropdown">
@@ -57,7 +57,7 @@ const Header = () => {
             </ul>
           </div>
         </div>
-      </Container>
+      </ContainerLayout>
     </div>
 
   )

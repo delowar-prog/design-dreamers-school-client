@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Container from "../../components/Container/Container";
+import ContainerLayout from "../../components/Container/ContainerLayout";
 import Lottie from "lottie-react";
 import animationLoginForm from "../../assets/140844-fashion-designer.json";
 import { useForm } from "react-hook-form";
@@ -24,7 +24,7 @@ const Login = () => {
   return (
     <div className='bg-base-100'>
     <Helmet><title>SCFDS || Login</title></Helmet>
-      <Container>
+      <ContainerLayout>
         <div className='flex flex-col lg:flex-row justify-around items-center gap-20' data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
           <div className="lg:w-[40%]">
             <div className="text-center lg:text-left">
@@ -66,7 +66,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </ContainerLayout>
     </div>
   )
 }

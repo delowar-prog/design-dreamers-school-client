@@ -32,14 +32,14 @@ const Dashboard = () => {
                         isAdmin && <Fragment>
                             <li><NavLink to="/dashboard/home"><FaHome></FaHome> Admin Home</NavLink></li>
                             <li><NavLink to="/dashboard/manageUser"><GrSelect></GrSelect> Manage User</NavLink></li>
-                            <li><NavLink to="/dashboard/ManageClasses"><IoIosApps></IoIosApps> Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/ManageClass"><IoIosApps></IoIosApps> Manage Classes</NavLink></li>
                         </Fragment>
                     }
                     {
                         isInstructor && <Fragment>
                             <li><NavLink to="/dashboard/home"><FaHome></FaHome> Instructor Home</NavLink></li>
                             <li><NavLink to="/dashboard/addClass"><GrSelect></GrSelect> Add a Class</NavLink></li>
-                            <li><NavLink to="/dashboard/home"><IoIosApps></IoIosApps> My Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/myAddedClass"><IoIosApps></IoIosApps> My Classes</NavLink></li>
                         </Fragment>
                     }
                     {

@@ -3,7 +3,7 @@ import SectionTitleDeshboard from "../../../components/SectionTitle/SectionTitle
 import { useQuery } from "@tanstack/react-query"
 import Swal from "sweetalert2"
 import useAxiosSecure from "../../../hooks/useAxiosSecure"
-import { AuthContext } from "../../../Provider/AuthProvider"
+
 
 const ManageUser = () => {
     const [axiosSecure] = useAxiosSecure()
@@ -62,7 +62,7 @@ const ManageUser = () => {
                     <h2 className="text-xl my-5 font-bold text-pink-500">Total User : {users.length}</h2>
                     <table className="table">
                         {/* head */}
-                        <thead className='text-gray-600 text-md uppercase text-indigo-700'>
+                        <thead className='text-gray-600 bg-indigo-100 text-md uppercase text-indigo-700'>
                             <tr>
                                 <th>Sl</th>
                                 <th>User Name</th>

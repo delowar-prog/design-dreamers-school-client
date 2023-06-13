@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Container from '../../components/Container/Container'
+import ContainerLayout from '../../components/Container/ContainerLayout'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import { Helmet } from 'react-helmet-async'
 import SingleClass from './SingleClass'
@@ -56,13 +56,13 @@ const Classes = () => {
     <div className='bg-pink-600 pb-20'>
     <Helmet><title>SCFDS || Classes</title></Helmet>
       <SectionTitle heading={'Our all classes'} subHeading={'Visit to find your favorite classes'}></SectionTitle>
-      <Container>
+      <ContainerLayout>
         <div className='grid grid-cols-3 gap-5'>
         {
           classes.map(item=><SingleClass key={item._id} item={item} handleSelectClass={handleSelectClass}></SingleClass>)
         }
         </div>
-      </Container>
+      </ContainerLayout>
     </div>
   )
 }

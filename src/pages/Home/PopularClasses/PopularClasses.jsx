@@ -1,5 +1,5 @@
 import SectionTitle from '../../../components/SectionTitle/SectionTitle'
-import Container from '../../../components/Container/Container'
+import ContainerLayout from '../../../components/Container/ContainerLayout'
 import './PopularClasses.css'
 import { useEffect, useState } from 'react'
 import PopularSingleClass from './PopularSingleClass'
@@ -12,7 +12,7 @@ const PopularClasses = () => {
       .then(data => setClasses(data))
   }, [])
   return (
-    <Container>
+    <ContainerLayout>
       <div>
         <SectionTitle heading={'Our Popular Calsses'} subHeading={'See details about our popular classes'}></SectionTitle>
         <div className='my-10 grid lg:grid-cols-3 gap-2'>
@@ -21,7 +21,7 @@ const PopularClasses = () => {
           }
         </div>
       </div>
-    </Container>
+    </ContainerLayout>
   )
 }
 

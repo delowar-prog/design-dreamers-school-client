@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Container from '../../components/Container/Container'
+import ContainerLayout from '../../components/Container/ContainerLayout'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import './Instructors.css'
 import { Helmet } from 'react-helmet-async'
@@ -17,13 +17,13 @@ const Instructors = () => {
         <div className='bg-pink-600 pb-20'>
             <Helmet><title>SCFDS || instructors</title></Helmet>
             <SectionTitle heading={'Our Instructors'} subHeading={'Join to justify us'}></SectionTitle>
-            <Container>
+            <ContainerLayout>
                 <div className='grid lg:grid-cols-3 gap-5'>
                     {
                         instructors.map(instructor => <SingleInstructor key={instructor._id} instructor={instructor}></SingleInstructor>)
                     }
                 </div>
-            </Container>
+            </ContainerLayout>
         </div>
 
     )
