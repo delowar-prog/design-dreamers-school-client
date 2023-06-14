@@ -10,12 +10,16 @@ const PopularInstructors = () => {
   useEffect(() => {
     fetch('http://localhost:5000/instructors/topsix')
       .then(res => res.json())
-      .then(data => setInstructors(data))
+      .then(data => {
+        if (data.length > 0){
+          setInstructors(data);
+        }
+      })
   }, [])
 
   return (
     <div className='bg-[#C25582]'>
-      <div className='py-20'>
+      <div className='py-10'>
         <SectionTitle heading={'Popular Instructors'} subHeading={'Justify our comments'}></SectionTitle>
         <ContainerLayout>
           <div className='grid lg:grid-cols-3 gap-3'>

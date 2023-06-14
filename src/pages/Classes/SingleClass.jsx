@@ -1,9 +1,13 @@
 import React from 'react'
 import { GiOfficeChair } from "react-icons/gi";
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 const SingleClass = ({item,handleSelectClass}) => {
+    const [isAdmin]=useAdmin()
+    const [isInstructor] = useInstructor();
     const {_id,image,name,instructor_name,price}=item
     return (
-        <div className='instructor-items bg-[#0D0D0D] border-b-4 border-pink-400 text-white space-y-2' >
+        <div className={`instructor-items bg-[#0D0D0D] border-b-4 border-pink-400 text-white space-y-2 ${item.available_seats==0 && 'bg-red-900'}`} >
             <div className='relative truncate'>
                 <img src={image} className='w-full h-64'></img>
                 <div className='absolute overlay w-full h-64'></div>
@@ -16,7 +20,7 @@ const SingleClass = ({item,handleSelectClass}) => {
             <hr />
             <div className='w-full flex justify-around items-center'>
                 <p>${price}</p>
-                <button onClick={()=>handleSelectClass(item)} className='bg-sky-500 my-5 py-1 px-2 text-white hover:bg-sky-600 uppercase'>Select Class</button>
+                <button onClick={()=>handleSelectClass(item)} className={`bg-sky-500 my-5 py-1 px-2 text-white hover:bg-sky-600 uppercase ${(item.available_seats==0||isAdmin||isInstructor)&&'bg-gray-500 hover:bg-gray-500'}`} disabled={item?.available_seats==0||isAdmin||isInstructor}>Select Class</button>
             </div>
         </div>
     )

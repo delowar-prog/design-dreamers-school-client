@@ -5,6 +5,7 @@ import useSelectedClass from '../../../hooks/useSelectedClass'
 import { FaTrash } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const MySelectedClass = () => {
   const [selectedClass,refetch] = useSelectedClass()
@@ -79,7 +80,7 @@ const MySelectedClass = () => {
         <div className='w-[40%] space-y-3 border border-gray-400 rounded p-5 my-5 float-right'>
           <h2 className='text-xl'>Total Selected Class : {selectedClass.length} </h2>
           <h2 className='text-xl'>Total Cost : $ {totalCost}</h2>
-          <button className='btn btn-success'>Pay Now</button>
+          <Link to="/dashboard/payment"><button className='btn btn-success'>Pay Now</button></Link>
         </div>
       </div>
     </Fragment>

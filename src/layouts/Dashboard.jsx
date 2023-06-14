@@ -46,7 +46,7 @@ const Dashboard = () => {
                        isAdmin||isInstructor||<Fragment>
                             <li><NavLink to="/dashboard/home"><FaHome></FaHome> User Home</NavLink></li>
                             <li><NavLink to="/dashboard/myClass"><GrSelect></GrSelect> My Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/home"><IoIosApps></IoIosApps> My Enroll Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/myEnroll"><IoIosApps></IoIosApps> My Enroll Classes</NavLink></li>
                         </Fragment>
                     }
 

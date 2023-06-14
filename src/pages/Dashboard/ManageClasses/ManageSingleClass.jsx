@@ -1,10 +1,13 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { BsSendFill } from 'react-icons/bs';
 import { FcApprove, FcCancel } from "react-icons/fc";
 import Swal from 'sweetalert2';
+import Modal from './Modal';
 const ManageSingleClass = ({ item,refetch }) => {
   const { name, image, price, available_seats, instructor_name, email,status } = item
   const token=localStorage.getItem('user_access_key')
+
+  //Approved a class by admin
   const handleApprove = (item) => {
     console.log(item._id)
     fetch(`http://localhost:5000/admin/approveClass/${item._id}`, {
@@ -27,6 +30,7 @@ const ManageSingleClass = ({ item,refetch }) => {
         }
       })
   }
+  //deny a class by admin
   const handleDeny=(item)=>{
     fetch(`http://localhost:5000/admin/denyClass/${item._id}`, {
       method: "PUT",
@@ -48,7 +52,10 @@ const ManageSingleClass = ({ item,refetch }) => {
         }
       })
   }
+  //Feedback why a class deny by admin
+
   return (
+    <Fragment>
     <tr>
       <td>
         <div className="flex items-center space-x-3">
@@ -70,12 +77,17 @@ const ManageSingleClass = ({ item,refetch }) => {
         status=='approved'&&<td className='text-sm text-green-500'>Approved</td>||status=='denied'&&<td className='text-sm text-red-500'>Denied</td>||<td className='text-sm text-sky-500'>Pending</td>
       }
       <td>
-        <button onClick={() => handleApprove(item)} className=''><FcApprove className='text-3xl' title='Approve'></FcApprove></button><button onClick={() => handleDeny(item)} className='' title='Deny'><FcCancel className='text-3xl'></FcCancel></button>
+        <button onClick={() => handleApprove(item)} disabled={status=='approved'||status=='denied'?true:false} className={status=='approved'||status=='denied'?'opacity-50':'opacity-100'}><FcApprove className='text-3xl' title='Approve'></FcApprove></button><button onClick={() => handleDeny(item)} disabled={status=='approved'||status=='denied'?true:false} className={status=='approved'||status=='denied'?'opacity-50':'opacity-100'} title='Deny'><FcCancel className='text-3xl'></FcCancel></button>
       </td>
       <td>
-        <button onClick={() => handleFeed(item)} className='btn btn-secondary btn-xs'><BsSendFill title='Send feedback' ></BsSendFill></button>
+      <label htmlFor="my_modal_6" className="btn"><BsSendFill title='Send feedback' ></BsSendFill></label>
       </td>
     </tr>
+    
+    <Modal item={item}></Modal>
+        
+    </Fragment> 
+    
   )
 }
 

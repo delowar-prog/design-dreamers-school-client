@@ -6,7 +6,6 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
-import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../layouts/Dashboard";
 import MySelectedClass from "../pages/Dashboard/MySelectedClass/MySelectedClass";
 import DashboardHome from "../pages/Dashboard/Home/DashboardHome";
@@ -15,12 +14,17 @@ import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import InstructorRoutes from "./InstructorRoutes";
 import AdminRoutes from "./AdminRoutes";
 import ManageClassses from "../pages/Dashboard/ManageClasses/ManageClassses";
+import MyClass from "../pages/Dashboard/MyClass/MyClass";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import MyEnrolledClass from "../pages/Dashboard/MyEnrolledClass/MyEnrolledClass";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -48,6 +52,7 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <Dashboard></Dashboard>,
     children: [
+      //user dashboard route 
       {
         path:'home',
         element:<DashboardHome></DashboardHome>
@@ -57,6 +62,15 @@ const router = createBrowserRouter([
         element: <MySelectedClass></MySelectedClass>
       },
       {
+        path:'payment',
+        element:<Payment></Payment>
+      },
+      {
+        path:'myEnroll',
+        element:<MyEnrolledClass></MyEnrolledClass>,
+      },
+      //Admin dashboard route start
+      {
         path:'manageUser',
         element:<AdminRoutes><ManageUser></ManageUser></AdminRoutes>
       },
@@ -64,9 +78,14 @@ const router = createBrowserRouter([
         path:'manageClass',
         element:<AdminRoutes><ManageClassses></ManageClassses></AdminRoutes>
       },
+      //Instructor dashboard route start
       {
         path:'addClass',
         element:<InstructorRoutes><AddClass></AddClass></InstructorRoutes>
+      },
+      {
+        path:'myAddedClass',
+        element:<MyClass></MyClass>
       }
     ]
   }

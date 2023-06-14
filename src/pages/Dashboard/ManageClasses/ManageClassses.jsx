@@ -22,7 +22,7 @@ const ManageClassses = () => {
             </div>
             <div className='w-[95%] mx-auto my-10'>
                 <div className="overflow-x-auto w-full">
-                    <h2 className="text-xl my-5 font-bold text-pink-500">Total User : {classes.length}</h2>
+                    <h2 className="text-xl my-5 font-bold text-pink-500">Total Classes : {classes.length}</h2>
                     <table className="table w-full">
                         {/* head */}
                         <thead className="z-10 bg-indigo-100 sticky top-0">

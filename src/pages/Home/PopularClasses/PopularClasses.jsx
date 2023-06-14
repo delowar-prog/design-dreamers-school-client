@@ -9,7 +9,11 @@ const PopularClasses = () => {
   useEffect(() => {
     fetch('http://localhost:5000/classes/topsix')
       .then(res => res.json())
-      .then(data => setClasses(data))
+      .then(data => {
+        if (data.length > 0){
+          setClasses(data);
+        }
+      })
   }, [])
   return (
     <ContainerLayout>

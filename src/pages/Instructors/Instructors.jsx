@@ -11,7 +11,11 @@ const Instructors = () => {
     useEffect(() => {
         fetch('http://localhost:5000/instructors')
             .then(res => res.json())
-            .then(data => setInstructors(data))
+            .then(data => {
+                if(data.length>0){
+                    setInstructors(data)
+                }
+            })
     }, [])
     return (
         <div className='bg-pink-600 pb-20'>

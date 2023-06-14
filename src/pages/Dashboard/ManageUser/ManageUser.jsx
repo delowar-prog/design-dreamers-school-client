@@ -3,6 +3,7 @@ import SectionTitleDeshboard from "../../../components/SectionTitle/SectionTitle
 import { useQuery } from "@tanstack/react-query"
 import Swal from "sweetalert2"
 import useAxiosSecure from "../../../hooks/useAxiosSecure"
+import { AuthContext } from "../../../Provider/AuthProvider"
 
 
 const ManageUser = () => {
