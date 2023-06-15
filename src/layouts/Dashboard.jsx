@@ -7,6 +7,7 @@ import { MdOutlineClass } from "react-icons/md";
 import { FcManager } from "react-icons/fc";
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
+import { BsFillCreditCard2FrontFill } from "react-icons/bs";
 const Dashboard = () => {
 
     // const isAdmin = true;
@@ -47,6 +48,7 @@ const Dashboard = () => {
                             <li><NavLink to="/dashboard/home"><FaHome></FaHome> User Home</NavLink></li>
                             <li><NavLink to="/dashboard/myClass"><GrSelect></GrSelect> My Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/myEnroll"><IoIosApps></IoIosApps> My Enroll Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/paymentHistory"><BsFillCreditCard2FrontFill></BsFillCreditCard2FrontFill> Payment History</NavLink></li>
                         </Fragment>
                     }
 

@@ -17,7 +17,7 @@ const MySingleClass = ({myClass}) => {
       <td>
         {name}
       </td>
-      <td>{Math.round(Math.random(10)*10)}</td>
+      <td>{status=='approved'?Math.round(Math.random(10)*10):'0'}</td>
       <td>{price}</td>
       <td><p className='bg-indigo-300 text-center text-cyan-500 rounded-xl'>{status?status:'Pending'}</p></td>
       <td>{status!=='approved'||status!==true||feedback?feedback:'This class is not granted to our management'}</td>

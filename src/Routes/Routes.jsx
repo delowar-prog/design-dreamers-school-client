@@ -18,6 +18,7 @@ import MyClass from "../pages/Dashboard/MyClass/MyClass";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import MyEnrolledClass from "../pages/Dashboard/MyEnrolledClass/MyEnrolledClass";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path:'myEnroll',
         element:<MyEnrolledClass></MyEnrolledClass>,
+      },
+      {
+        path:'paymentHistory',
+        element:<PaymentHistory></PaymentHistory>
       },
       //Admin dashboard route start
       {

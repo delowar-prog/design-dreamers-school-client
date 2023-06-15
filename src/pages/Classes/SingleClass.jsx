@@ -20,7 +20,7 @@ const SingleClass = ({item,handleSelectClass}) => {
             <hr />
             <div className='w-full flex justify-around items-center'>
                 <p>${price}</p>
-                <button onClick={()=>handleSelectClass(item)} className={`bg-sky-500 my-5 py-1 px-2 text-white hover:bg-sky-600 uppercase ${(item.available_seats==0||isAdmin||isInstructor)&&'bg-gray-500 hover:bg-gray-500'}`} disabled={item?.available_seats==0||isAdmin||isInstructor}>Select Class</button>
+                <button onClick={()=>handleSelectClass(item)} className={`my-5 py-1 px-2 text-white uppercase ${(item.available_seats==0||isAdmin||isInstructor)?'bg-gray-500 hover:bg-gray-500':'bg-sky-500 hover:bg-sky-600'}`} disabled={item?.available_seats==0||isAdmin||isInstructor}>Select Class</button>
             </div>
         </div>
     )
