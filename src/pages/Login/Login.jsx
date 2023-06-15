@@ -3,12 +3,13 @@ import ContainerLayout from "../../components/Container/ContainerLayout";
 import Lottie from "lottie-react";
 import animationLoginForm from "../../assets/140844-fashion-designer.json";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
+  const [show, setShow]=useState(false)
   const navigate=useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
@@ -48,11 +49,16 @@ const Login = () => {
                       <label className="label">
                         <span className="label-text text-white">Password</span>
                       </label>
-                      <input type="text" {...register("password", { required: true })} placeholder="password" className="input input-bordered" />
+                      <input type={show?"text":'password'} {...register("password", { required: true })} placeholder="password" className="input input-bordered" />
                       {errors.password && <span className="text-red-500">password is required</span>}
-                      <label className="label">
-                        <a href="#" className="label-text-alt link link-hover text-white">Forgot password?</a>
-                      </label>
+
+                     <p onClick={()=>setShow(!show)}>
+                        <small>
+                          {
+                            show?<span  className="text-cyan-600 cursor-pointer">Hide Password</span>:<span className="text-white cursor-pointer">Show Password</span>
+                          }
+                        </small>
+                     </p>
                     </div>
                     <div className="form-control mt-6">
                       <button type="submit" className="py-2 w-[100%] mx-auto text-white uppercase bg-cyan-500">Login</button>

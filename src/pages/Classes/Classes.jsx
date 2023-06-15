@@ -34,10 +34,12 @@ const Classes = () => {
       })
     }else{
         const selectedClass={classId:_id,image,name,instructor_name,price,email:user?.email} 
+        const token=localStorage.getItem('user_access_key')
         fetch(`http://localhost:5000/selected/classes`,{
           method:'POST',
           headers:{
-            'content-type':'Application/json'
+            'content-type':'Application/json',
+            authorization:`Bearer ${token}`
           },
           body:JSON.stringify(selectedClass) 
         })

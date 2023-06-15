@@ -20,7 +20,7 @@ const Header = () => {
         <li className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <img src={user.photoURL} title={user.displayName}/>
             </div>
           </label>
           <ul tabIndex={0} className="text-white menu menu-sm dropdown-content p-2 shadow bg-pink-700 border rounded-box w-36">

@@ -3,6 +3,7 @@ import Slider from '../Slider/Slider'
 import PopularClasses from '../PopularClasses/PopularClasses'
 import PopularInstructors from '../PopularInstructors/PopularInstructors'
 import { Helmet } from 'react-helmet-async'
+import StudentsFeedback from '../StudentsFeedback/StudentsFeedback'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Slider></Slider>
       <PopularClasses></PopularClasses>
       <PopularInstructors></PopularInstructors>
+      <StudentsFeedback></StudentsFeedback>
     </div>
   )
 }

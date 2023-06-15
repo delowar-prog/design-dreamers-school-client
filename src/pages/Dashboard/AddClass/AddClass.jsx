@@ -10,7 +10,7 @@ const AddClass = () => {
     const [axiosSecure]=useAxiosSecure()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const image_upload_token = import.meta.env.VITE_image_upload_key
-    const img_upload_url = `https://api.imgbb.com/1/upload?expiration=600&key=${image_upload_token}`
+    const img_upload_url = `https://api.imgbb.com/1/upload?key=${image_upload_token}`
     const onSubmit = data => {
         console.log(data)
         const formData = new FormData()
