@@ -6,6 +6,7 @@ import SingleClass from './SingleClass'
 import { AuthContext } from '../../provider/authProvider'
 import Swal from 'sweetalert2'
 
+
 const Classes = () => {
   const [classes, setClasses]=useState([])
   const {user}=useContext(AuthContext)

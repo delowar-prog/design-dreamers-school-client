@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <div className='bg-pink-700 nav-section py-2 z-10 border-b-4 border-gray-500 sticky top-0'>
       <ContainerLayout>
-        <div className="navbar text-white">
+        <div className="navbar text-gray-500 md:text-white">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">

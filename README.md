@@ -2,7 +2,7 @@
 ## Project Name : Summer camp fashion design school <br><br><br>  
 
 ### Features : 
-- Its a technical training center on fashion design for a certain period.<br>
+- Its a web site of technical training center on fashion design for a certain period.<br>
 
 - Here has a Class page that represents the all approved classes  added by Instructors. An user can select class as a student of the class.<br>
 

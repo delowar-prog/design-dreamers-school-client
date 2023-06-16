@@ -25,8 +25,8 @@ const Footer = () => {
               <span className="label-text text-white">Enter your email address</span>
             </label>
             <div className="relative">
-              <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />
-              <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+              <input type="text" placeholder="username@site.com" className="input input-bordered w-[50%] md:w-full md:pr-16" />
+              <button className="btn btn-primary absolute top-0 right-0 rounded-l-none text-sm mr-14 md:mr-0 lg:text-lg">Subscribe</button>
             </div>
           </div>
         </div>

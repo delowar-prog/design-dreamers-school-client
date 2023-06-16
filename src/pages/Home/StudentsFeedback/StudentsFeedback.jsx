@@ -40,10 +40,10 @@ const StudentsFeedback = () => {
                     {
                         feedbacks.map(feedback => {
                             return <SwiperSlide key={feedback._id}>
-                                <div className="flex flex-col space-y-5 items-center mx-20">
+                                <div className="flex flex-col space-y-5 items-center mx-8 md:mx-20">
                                     <img src={feedback.photo} className='w-48'></img>
                                     <p className='text-white'>{feedback.message}</p>
-                                    <h1 className="text-gray-400 uppercase text-lg my-5">{feedback.name}</h1>
+                                    <h1 className="text-gray-400 uppercase text-sm md:text-lg my-5">{feedback.name}</h1>
                                 </div>
                             </SwiperSlide>
                         })

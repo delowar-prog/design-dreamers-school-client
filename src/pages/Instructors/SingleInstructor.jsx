@@ -1,8 +1,10 @@
 import React from 'react'
 import {v4 as uuidv4} from 'uuid'
+import { Fade } from "react-awesome-reveal";
 const SingleInstructor = ({ instructor }) => {
     return (
-        <div className='instructor-items bg-[#0D0D0D] border-b-4 border-pink-400 text-center text-white space-y-2' >
+        <Fade triggerOnce={true}>
+        <div className='instructor-items relative bg-[#0D0D0D] border-b-4 border-pink-400 text-center text-white space-y-2 min-h-[600px]' >
             <div className='relative'>
                 <img src={instructor.image} className='w-full h-64'></img>
                 <div className='absolute overlay w-full h-64 top-0'></div>
@@ -18,10 +20,11 @@ const SingleInstructor = ({ instructor }) => {
                     }
                 </ul>
             </div>
-            <div className='w-full flex justify-center items-center'>
+            <div className='w-full flex justify-center items-center classBtn'>
                 <button className='bg-sky-500 my-5 py-1 px-5 text-white hover:bg-sky-600 uppercase'>See the Classes</button>
             </div>
         </div>
+        </Fade>
     )
 }
 
