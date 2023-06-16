@@ -7,7 +7,8 @@ import { MdOutlineClass } from "react-icons/md";
 import { FcManager } from "react-icons/fc";
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
-import { BsFillCreditCard2FrontFill } from "react-icons/bs";
+import { BsCardChecklist, BsDatabaseAdd, BsFillCreditCard2FrontFill } from "react-icons/bs";
+import { GrCheckboxSelected, } from "react-icons/gr";
 const Dashboard = () => {
 
     // const isAdmin = true;
@@ -39,14 +40,14 @@ const Dashboard = () => {
                     {
                         isInstructor && <Fragment>
                             <li><NavLink to="/dashboard/home"><FaHome></FaHome> Instructor Home</NavLink></li>
-                            <li><NavLink to="/dashboard/addClass"><GrSelect></GrSelect> Add a Class</NavLink></li>
+                            <li><NavLink to="/dashboard/addClass"><BsDatabaseAdd></BsDatabaseAdd> Add a Class</NavLink></li>
                             <li><NavLink to="/dashboard/myAddedClass"><IoIosApps></IoIosApps> My Classes</NavLink></li>
                         </Fragment>
                     }
                     {
                        isAdmin||isInstructor||<Fragment>
                             <li><NavLink to="/dashboard/home"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/dashboard/myClass"><GrSelect></GrSelect> My Selected Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/myClass"> <BsCardChecklist></BsCardChecklist>My Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/myEnroll"><IoIosApps></IoIosApps> My Enroll Classes</NavLink></li>
                             <li><NavLink to="/dashboard/paymentHistory"><BsFillCreditCard2FrontFill></BsFillCreditCard2FrontFill> Payment History</NavLink></li>
                         </Fragment>

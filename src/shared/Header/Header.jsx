@@ -2,7 +2,7 @@ import { Fragment, useContext } from 'react'
 import ContainerLayout from '../../components/Container/ContainerLayout'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../provider/AuthProvider'
-
+import Logo from '../../assets/logo.png'
 const Header = () => {
   const { user, logoutUser } = useContext(AuthContext)
   const handleLogout=()=>{
@@ -49,7 +49,7 @@ const Header = () => {
                 {navbarLink}
               </ul>
             </div>
-            <a><h2 className='text-xl text-center'>Summer camp fashion<br /> design school</h2></a>
+            <a><img src={Logo} className='w-32'></img></a>
           </div>
           <div className="navbar-end hidden lg:flex">
             <ul className="menu menu-horizontal px-1 text-md">

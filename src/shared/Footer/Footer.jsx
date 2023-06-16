@@ -1,10 +1,10 @@
-
+import Logo from '../../assets/logo.png'
 const Footer = () => {
   return (
     <div className=''>
       <footer className="footer p-14 bg-gray-700 text-base-content flex flex-col sm:flex-row justify-between">
         <div>
-          <h3 className='uppercase text-xl tracking-widest text-white font-bold'>Summer Camp  <span className='text-yellow-400'>Fashion <br/>Design School</span></h3>
+          <img src={Logo} className="w-48 grayscale"></img>
         </div>
         <div className='text-white'>
           <span className="footer-title">Contact</span>
