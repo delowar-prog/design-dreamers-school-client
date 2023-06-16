@@ -10,7 +10,7 @@ const ManageSingleClass = ({ item,refetch }) => {
   //Approved a class by admin
   const handleApprove = (item) => {
     console.log(item._id)
-    fetch(`http://localhost:5000/admin/approveClass/${item._id}`, {
+    fetch(`https://summer-camp-fashion-design-server.vercel.app/admin/approveClass/${item._id}`, {
       method: "PUT",
       headers:{
         authorization:`Bearer ${token}`
@@ -32,7 +32,7 @@ const ManageSingleClass = ({ item,refetch }) => {
   }
   //deny a class by admin
   const handleDeny=(item)=>{
-    fetch(`http://localhost:5000/admin/denyClass/${item._id}`, {
+    fetch(`https://summer-camp-fashion-design-server.vercel.app/admin/denyClass/${item._id}`, {
       method: "PUT",
       headers:{
         authorization:`Bearer ${token}`

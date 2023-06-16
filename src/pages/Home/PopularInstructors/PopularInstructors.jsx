@@ -8,7 +8,7 @@ import SinglePopularInstructor from "./SinglePopularInstructor";
 const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/instructors/topsix')
+    fetch('https://summer-camp-fashion-design-server.vercel.app/instructors/topsix')
       .then(res => res.json())
       .then(data => {
         if (data.length > 0){

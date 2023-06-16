@@ -25,7 +25,7 @@ const Register = () => {
         updateUserProfile(data.name, data.photo)
           .then(result => {
             const userData = { name: data.name, email: data.email }
-            fetch('http://localhost:5000/users', {
+            fetch('https://summer-camp-fashion-design-server.vercel.app/users', {
               method: "POST",
               headers: {
                 'content-type': 'application/json'

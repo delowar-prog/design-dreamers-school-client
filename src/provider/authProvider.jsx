@@ -46,7 +46,7 @@ const AuthProvider = ({children}) => {
             setUser(currentUser)
             //get & set into localstorage
             if(currentUser){
-                axios.post(`http://localhost:5000/jwt`,{
+                axios.post(`https://summer-camp-fashion-design-server.vercel.app/jwt`,{
                     email:currentUser.email
                 })
                 .then(result=>{

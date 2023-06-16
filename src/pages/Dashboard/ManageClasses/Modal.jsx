@@ -6,7 +6,7 @@ const Modal = ({ item }) => {
     const feedback = useRef()
     const handleFeedback = (item) => {
         const feedMsg = {feedback:feedback.current.value}
-        fetch(`http://localhost:5000/admin/feedback/${item._id}`, {
+        fetch(`https://summer-camp-fashion-design-server.vercel.app/admin/feedback/${item._id}`, {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${token}`

@@ -12,7 +12,7 @@ const Classes = () => {
   const {user}=useContext(AuthContext)
   //load data
   useEffect(()=>{
-    fetch('http://localhost:5000/classes')
+    fetch('https://summer-camp-fashion-design-server.vercel.app/classes')
     .then(res=>res.json())
     .then(data=>{
       if(data.length>0){
@@ -36,7 +36,7 @@ const Classes = () => {
     }else{
         const selectedClass={classId:_id,image,name,instructor_name,price,email:user?.email} 
         const token=localStorage.getItem('user_access_key')
-        fetch(`http://localhost:5000/selected/classes`,{
+        fetch(`https://summer-camp-fashion-design-server.vercel.app/selected/classes`,{
           method:'POST',
           headers:{
             'content-type':'Application/json',

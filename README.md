@@ -18,6 +18,7 @@
 - Firebase, jsonwebtoken
 - Stripe for payment method
 - Axios, react Helmet & sweetalert
+- React-awesome-reveal & lottie-react
 
 <br><br><br>
 ### Project Link :   
