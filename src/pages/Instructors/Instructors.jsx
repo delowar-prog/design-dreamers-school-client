@@ -7,29 +7,28 @@ import SingleInstructor from './SingleInstructor'
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState([])
-    //load data
     useEffect(() => {
         fetch('https://summer-camp-fashion-design-server.vercel.app/instructors')
             .then(res => res.json())
             .then(data => {
-                if(data.length>0){
+                if (data.length > 0) {
                     setInstructors(data)
                 }
             })
     }, [])
+    //load data
     return (
-        <div className='bg-pink-600 pb-20'>
+        <div className='pb-20'>
             <Helmet><title>SCFDS || instructors</title></Helmet>
             <SectionTitle heading={'Our Instructors'} subHeading={'Join to justify us'}></SectionTitle>
             <ContainerLayout>
-                <div className='grid lg:grid-cols-3 gap-5'>
-                    {
-                        instructors.map(instructor => <SingleInstructor key={instructor._id} instructor={instructor}></SingleInstructor>)
-                    }
+                <div className='grid lg:grid-cols-4 gap-5'>
+                 {
+                  instructors.map(instructor => <SingleInstructor key={instructor._id} instructor={instructor}></SingleInstructor>)
+                 }
                 </div>
             </ContainerLayout>
         </div>
-
     )
 }
 

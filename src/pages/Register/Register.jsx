@@ -1,60 +1,51 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ContainerLayout from "../../components/Container/ContainerLayout";
 import Lottie from "lottie-react";
 import animationLoginForm from "../../assets/140844-fashion-designer.json";
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
-import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../hooks/useAuth";
+import SocialLogin from "../Login/SocialLogin";
+import { useState } from "react";
 
 const Register = () => {
-  const { registerUser, updateUserProfile, logoutUser } = useContext(AuthContext)
-  const navigate = useNavigate()
-  const [customError, setCustomError] = useState('')
+  const {createUser, updateUserProfile} = useAuth()
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const [customError, setCustomError] = useState('')
+
   const onSubmit = data => {
-    if (data.password !== data.confirm) {
-      setCustomError('Password & Confirm Password Not Matched')
-    }
-    registerUser(data.email, data.password)
+    console.log(data);
+    createUser(data.email, data.password)
       .then(result => {
-        const loggedUser = result.user
+        const loggedUser = result.user;
         console.log(loggedUser)
         updateUserProfile(data.name, data.photo)
-          .then(result => {
-            const userData = { name: data.name, email: data.email }
-            fetch('https://summer-camp-fashion-design-server.vercel.app/users', {
-              method: "POST",
-              headers: {
-                'content-type': 'application/json'
-              },
-              body: JSON.stringify(userData)
-            })
-              .then(res => res.json())
-              .then(data => {
-                if (data.insertedId) {
-                  Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Registration completed successfully',
-                    showConfirmButton: false,
-                    timer: 1000
-                  })
-                  logoutUser().then(() => {
-                    navigate('/login')
-                  })
-                }
-              })
-
+        .then(result=>{
+          const saveUserInfo = { name: data.name, email: data.email }
+          fetch(`https://summer-camp-fashion-design-server.vercel.app/users`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(saveUserInfo)
           })
+            .then(res => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                return navigate(from, { replace: true })
+              }
+            })
+        })
       })
       .catch(error => {
         setCustomError(error.message)
       })
-
   }
+
   return (
     <div className='bg-base-100'>
       <Helmet><title>SCFDS || Register</title></Helmet>
@@ -71,7 +62,6 @@ const Register = () => {
               <div className="card flex-shrink-0 w-full shadow-3xl border">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="card-body text-white">
-
                     <div className="flex gap-5">
                       <div className="form-control w-full">
                         <label className="label">
@@ -131,7 +121,7 @@ const Register = () => {
                         <input type="password" {...register("confirm", { required: true })} placeholder="confirm password" className="input input-bordered text-gray-500" />
                         {errors.confirm && <span className="text-red-500">Confirm Password is required</span>}
                         {
-                          customError ? <span className="text-red-500">{customError}</span> : ''
+                          <span className="text-red-500"></span>
                         }
                       </div>
                     </div>
@@ -163,10 +153,7 @@ const Register = () => {
                 </form>
               </div>
               <div className="divider">OR</div>
-              <button type="submit" className="btn btn-outline border-gray-400 hover:bg-gray-300 hover:text-gray-800 gap-2">
-                <FcGoogle className='text-xl'></FcGoogle>
-                <span className="text-red-500">Continue with Google</span>
-              </button>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>

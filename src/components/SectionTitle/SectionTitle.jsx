@@ -5,8 +5,8 @@ const SectionTitle = ({ heading, subHeading }) => {
         <Slide triggerOnce={true}>
             <div className='w-full md:w-[40%] mx-auto py-14 text-center'>
                 <Bounce triggerOnce={true}>
-                    <h2 className='font-serif text-xl md:text-2xl text-white font-semibold uppercase py-3'>{heading}</h2>
-                    <p className='text-yellow-300 text-2xl' style={{ fontFamily: "Dancing Script" }}>{subHeading}</p>
+                    <h2 className='font-serif text-xl md:text-2xl font-semibold uppercase py-3'>{heading}</h2>
+                    <p className='text-2xl text-cyan-800' style={{ fontFamily: "Dancing Script" }}>{subHeading}</p>
                 </Bounce>
             </div>
         </Slide>

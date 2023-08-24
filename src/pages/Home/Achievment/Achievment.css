@@ -1,0 +1,5 @@
+.achievment-overlay{
+    position: absolute;
+    top: 0;
+    background-image: linear-gradient(rgba(26, 26, 24, 0.7), rgba(14, 14, 12, 0.7));
+}

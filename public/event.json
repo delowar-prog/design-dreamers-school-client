@@ -1,0 +1,64 @@
+[
+       {
+          "_id":1,
+          "event_name":"Fashion Show Extravaganza",
+          "date":"Aug 30, 2023",
+          "description":"Join us for a spectacular fashion show featuring the latest creations from our talented students. Witness the fusion of creativity and style on the runway."
+       },
+       {
+          "_id":2,
+          "event_name":"Guest Designer Workshop",
+          "date":"Sep 02, 2023",
+          "description":"Renowned fashion designer [Designer Name] will be conducting an exclusive workshop, sharing insights into their design philosophy and industry trends."
+       },
+       {
+          "_id":3,
+          "event_name":"Portfolio Review Day",
+          "date":"Sep 05, 2023",
+          "description":"Get personalized feedback on your design portfolio from our expert panel of faculty members and industry professionals. Perfect for students seeking guidance on their creative journey."
+       },
+       {
+          "_id":4,
+          "event_name":"Textile Innovation Seminar",
+          "date":"Sep 10, 2023",
+          "description":"Explore the world of cutting-edge textiles and materials with industry experts. Learn about sustainable practices, new fabric technologies, and their applications in fashion design."
+       },
+       {
+          "_id":5,
+          "event_name":"Fashion Entrepreneurship Conference",
+          "date":"Sep 15, 2023",
+          "description":"Discover the business side of fashion. This conference brings together successful fashion entrepreneurs to share their stories, insights, and strategies for building a fashion brand."
+       },
+       {
+          "_id":6,
+          "event_name":"Fashion History Symposium",
+          "date":"Sep 18, 2023",
+          "description":"Delve into the rich history of fashion through engaging talks and discussions. Explore the evolution of styles, iconic designers, and the cultural impact of fashion trends."
+       },
+       {
+          "_id":7,
+          "event_name":"Designing for Diversity Workshop",
+          "date":"Sep 22, 2023",
+          "description":"Learn about the importance of inclusivity in fashion design. This workshop explores techniques for creating clothing that celebrates and accommodates diverse body types, cultures, and identities."
+       },
+       {
+          "_id":8,
+          "event_name":"Fashion Tech Hackathon",
+          "date":"Sep 25, 2023",
+          "description":"Calling all tech-savvy fashion enthusiasts! Join our hackathon to explore the intersection of fashion and technology. Develop innovative solutions and wearable tech prototypes."
+       },
+       {
+          "_id":9,
+          "event_name":"Accessory Design Masterclass",
+          "date":"Sep 28, 2023",
+          "description":"Elevate your accessory design skills with this masterclass focused on creating unique and eye-catching fashion accessories, from jewelry to handbags and beyond."
+       },
+       {
+          "_id":10,
+          "event_name":"Fashion Illustration Workshop",
+          "date":"Sep 30, 2023",
+          "description":"Hone your fashion illustration techniques with guidance from experienced illustrators. Perfect for students looking to enhance their design presentation skills."
+       }
+ ]
+
+ 

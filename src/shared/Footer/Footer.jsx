@@ -2,7 +2,7 @@ import Logo from '../../assets/logo.png'
 const Footer = () => {
   return (
     <div className=''>
-      <footer className="footer p-14 bg-gray-700 text-base-content flex flex-col sm:flex-row justify-between">
+      <footer className="footer p-2 md:p-14 bg-gray-700 text-base-content flex flex-col sm:flex-row justify-between">
         <div>
           <img src={Logo} className="w-48 grayscale"></img>
         </div>

@@ -6,12 +6,13 @@ import { FaTrash } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const MySelectedClass = () => {
-  const [selectedClass,refetch] = useSelectedClass()
-  const totalCost=selectedClass.reduce((sum,item)=>item.price+sum,0)
+  const [selectedClass, refetch] = useSelectedClass()
+  const totalCost = selectedClass.reduce((sum, item) => item.price + sum, 0)
 
-  const handleDeleteClass=item=>{
+  const handleDeleteClass = item => {
     Swal.fire({
       title: 'Are you sure?',
       text: "Delete This Selected Class!",
@@ -22,27 +23,26 @@ const MySelectedClass = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-       fetch(`https://summer-camp-fashion-design-server.vercel.app/selected/classes/${item._id}`,
-       {
-        method:"DELETE",
-       })
-       .then(res=>res.json())
-       .then(data=>{
-        if(data.deletedCount>0){
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-          refetch()
-        }
-       })
+        fetch(`https://summer-camp-fashion-design-server.vercel.app/selected/classes/${item._id}`,
+          {method: "DELETE",})
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+              refetch()
+            }
+          })
       }
     })
   }
- 
+
   return (
     <Fragment>
+      <Helmet><title>SCFDS || Dashboard | My-Selected</title></Helmet>
       <div className='w-full'>
         <SectionTitleDeshboard heading={'My Selected Classes'} subHeading={'Whats imaging'}></SectionTitleDeshboard>
       </div>
@@ -62,13 +62,13 @@ const MySelectedClass = () => {
             <tbody>
               {/* row 1 */}
               {
-                selectedClass.map((item,index) =><Fragment key={item._id}>
+                selectedClass.map((item, index) => <Fragment key={item._id}>
                   <tr>
-                    <th>{index+1}</th>
+                    <th>{index + 1}</th>
                     <td>{item.name}</td>
                     <td>{item.instructor_name}</td>
                     <td>$ {item.price}</td>
-                    <td><button onClick={()=>handleDeleteClass(item)} className='btn btn-primary btn-sm'><FaTrash className='text-lg text-red-500'></FaTrash></button></td>
+                    <td><button onClick={() => handleDeleteClass(item)} className='btn btn-primary btn-sm'><FaTrash className='text-lg text-red-500'></FaTrash></button></td>
                   </tr>
                 </Fragment>)
               }

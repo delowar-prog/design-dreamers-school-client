@@ -1,9 +1,11 @@
 import React from 'react'
 import SectionTitleDeshboard from '../../../components/SectionTitle/SectionTitleDeshboard'
+import { Helmet } from 'react-helmet-async'
 
 const DashboardHome = () => {
   return (
     <div className='w-full'>
+    <Helmet><title>SCFDS || Dashboard | Home</title></Helmet>
       <div className='w-full'>
         <SectionTitleDeshboard heading={'Dashboard Home'} subHeading={''}></SectionTitleDeshboard>
       </div>

@@ -2,20 +2,28 @@ import { Fragment, useContext } from "react"
 import SectionTitleDeshboard from "../../../components/SectionTitle/SectionTitleDeshboard"
 import { useQuery } from "@tanstack/react-query"
 import Swal from "sweetalert2"
+import { Helmet } from "react-helmet-async"
 import useAxiosSecure from "../../../hooks/useAxiosSecure"
-import { AuthContext } from "../../../Provider/AuthProvider"
 
-
-const ManageUser = () => {
-    const [axiosSecure] = useAxiosSecure()
-    const token=localStorage.getItem('user_access_key')
+    const ManageUser = () => {
+    // const token = localStorage.getItem('access-token')
+    const [axiosSecure]=useAxiosSecure()
     const { data: users = [], refetch } = useQuery({
-        queryKey:['alluser'],
+        queryKey: ['alluser'],
         queryFn: async () => {
-        const res = await axiosSecure(`/users`)
-        return res.data
-    }
-})
+            const res = await axiosSecure.get(`https://summer-camp-fashion-design-server.vercel.app/users`)
+            console.log(res.data)
+            return res.data
+        }
+        // queryFn: async () => {
+        //     const res = await fetch(`https://summer-camp-fashion-design-server.vercel.app/users`, {
+        //         headers: {
+        //             authorization: `bearer ${token}`
+        //         }
+        //     })
+        //     return res.json()
+        // }
+    })
 
     const handleMakeAdmin = (user) => {
         fetch(`https://summer-camp-fashion-design-server.vercel.app/users/admin/${user._id}`, {
@@ -35,6 +43,7 @@ const ManageUser = () => {
                 }
             })
     }
+
     const handleMakeInstructor = (user) => {
         fetch(`https://summer-camp-fashion-design-server.vercel.app/users/instructor/${user._id}`, {
             method: "PUT"
@@ -53,8 +62,10 @@ const ManageUser = () => {
                 }
             })
     }
+
     return (
         <Fragment>
+            <Helmet><title>SCFDS || Dashboard | ManageUser</title></Helmet>
             <div className='w-full'>
                 <SectionTitleDeshboard heading={'Manage user'} subHeading={''}></SectionTitleDeshboard>
             </div>
@@ -85,7 +96,6 @@ const ManageUser = () => {
                                     </tr>
                                 </Fragment>)
                             }
-
                         </tbody>
                     </table>
                 </div>

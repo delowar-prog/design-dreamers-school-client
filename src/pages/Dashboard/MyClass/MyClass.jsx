@@ -1,14 +1,14 @@
-import { useContext } from 'react'
 import SectionTitleDeshboard from '../../../components/SectionTitle/SectionTitleDeshboard'
-import { AuthContext } from '../../../Provider/AuthProvider'
 import useMyAddedClass from '../../../hooks/useMyAddedClass'
 import MySingleClass from './MySingleClass'
+import { Helmet } from 'react-helmet-async'
 
 const MyClass = () => {
  const [myAddedClass]=useMyAddedClass()
  console.log(myAddedClass)
     return (
         <div className='w-full'>
+        <Helmet><title>SCFDS || Dashboard | ManageUser</title></Helmet>
             <div className='w-full'>
                 <SectionTitleDeshboard heading={'My Added Classes'} subHeading={''}></SectionTitleDeshboard>
             </div>

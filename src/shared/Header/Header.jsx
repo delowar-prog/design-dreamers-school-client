@@ -1,43 +1,22 @@
-import { Fragment, useContext } from 'react'
+import { Fragment } from 'react'
 import ContainerLayout from '../../components/Container/ContainerLayout'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../provider/AuthProvider'
 import Logo from '../../assets/logo.png'
+import useAuth from '../../hooks/useAuth'
+
 const Header = () => {
-  const { user, logoutUser } = useContext(AuthContext)
-  const handleLogout=()=>{
-    logoutUser()
-    .then()
-  }
+  const { user} = useAuth()
   const navbarLink =
     <Fragment>
       <li><Link to="/" className='hover:bg-inherit'>Home</Link></li>
       <li><Link to="/instructors" className='hover:bg-inherit'>Instructors</Link></li>
       <li><Link to="/classes" className='hover:bg-inherit'>Classes</Link></li>
-      {
-        user ? <Fragment>
-        <li><Link to="/dashboard/home" className='hover:bg-inherit'>Dashboard</Link></li>
-        <li className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src={user.photoURL} title={user.displayName}/>
-            </div>
-          </label>
-          <ul tabIndex={0} className="text-white menu menu-sm dropdown-content p-2 shadow bg-pink-700 border rounded-box w-36">
-            <li>
-              <a className="justify-between">
-                Profile
-              </a>
-            </li>
-            <li><button type='submit' onClick={handleLogout}>Logout</button></li>
-          </ul>
-        </li>
-        </Fragment>:<li><Link to="/login" className='hover:bg-inherit'>Login</Link></li>
-      }
+      <li><Link to="/blogs" className='hover:bg-inherit'>Blogs</Link></li>
+      <li><Link to="/contact" className='hover:bg-inherit'>Contact</Link></li>
     </Fragment>
 
   return (
-    <div className='bg-pink-700 nav-section py-2 z-10 border-b-4 border-gray-500 sticky top-0'>
+    <div className='bg-slate-800 nav-section z-10 border-b-2 border-gray-500 sticky top-0'>
       <ContainerLayout>
         <div className="navbar text-gray-500 md:text-white">
           <div className="navbar-start">
@@ -52,7 +31,7 @@ const Header = () => {
             <a><img src={Logo} className='w-32'></img></a>
           </div>
           <div className="navbar-end hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 text-md">
+            <ul className="menu menu-horizontal px-1 text-md uppercase">
               {navbarLink}
             </ul>
           </div>

@@ -1,10 +1,10 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
-import { AuthContext } from '../../../provider/AuthProvider'
+import useAuth from '../../../hooks/useAuth'
 
 const CheckoutForm = ({selectedClass,price}) => {
-    const {user}=useContext(AuthContext)
+    const {user}=useAuth()
     const stripe = useStripe()
     const elements = useElements()
     const [axiosSecure] = useAxiosSecure()
@@ -112,7 +112,7 @@ const CheckoutForm = ({selectedClass,price}) => {
             </form>
             <p className='text-red-500 my-5'>{cardError}</p>
             {
-                transectionId&&<p className='text-green-500 my-5'>Transection completed with transection_id {transectionId}</p>
+                transectionId && <p className='text-green-500 my-5'>Transection completed with transection_id {transectionId}</p>
             }
         </div>
     )

@@ -1,20 +1,20 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { AuthContext } from '../Provider/AuthProvider';
+import useAuth from './useAuth';
 
-const axiosSecure = axios.create({
-    baseURL: 'https://summer-camp-fashion-design-server.vercel.app', // Replace with your base URL
-});
+//axiossecure create
 
 const useAxiosSecure = () => {
     const navigate = useNavigate();
-    const { logoutUser } = useContext(AuthContext)
-
+    const { logoutUser } = useAuth();
+    const axiosSecure = axios.create({
+        baseURL: 'https://summer-camp-fashion-design-server.vercel.app/', // Replace with your base URL
+    });
     useEffect(() => {
-         axiosSecure.interceptors.request.use(
+        axiosSecure.interceptors.request.use(
             (config) => {
-                const token = localStorage.getItem('user_access_key');
+                const token = localStorage.getItem('access-token');
                 if (token) {
                     config.headers.Authorization = `Bearer ${token}`;
                 }
@@ -31,7 +31,7 @@ const useAxiosSecure = () => {
                 return Promise.reject(error);
             }
         );
-    }, [logoutUser,navigate]);
+    }, [logoutUser,navigate,axiosSecure]);
     return [axiosSecure];
 };
 

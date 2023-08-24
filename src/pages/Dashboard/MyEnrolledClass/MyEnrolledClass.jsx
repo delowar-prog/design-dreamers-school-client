@@ -1,16 +1,17 @@
-import { Fragment, useContext, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import SectionTitleDeshboard from '../../../components/SectionTitle/SectionTitleDeshboard'
-import { AuthContext } from '../../../provider/AuthProvider'
+import useAuth from '../../../hooks/useAuth'
 
 const MyEnrolledClass = () => {
-    const { user, loading } = useContext(AuthContext)
+    const { user, loading } = useAuth()
     const [enrollClass, setEnrollClass] = useState([])
 
     useEffect(() => {
-        fetch(`https://summer-camp-fashion-design-server.vercel.app/enroll/classes/${user.email}`)
+        fetch(`https://summer-camp-fashion-design-server.vercel.app/enroll/classes/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.length > 0) {
+                    console.log(data)
                     setEnrollClass(data);
                 }
             })
@@ -35,11 +36,12 @@ const MyEnrolledClass = () => {
                         <tbody>
                             {/* row 1 */}
                             {
-                                enrollClass.map(items=>{
-                                    items.classesId.map(id=>{
-                                            <td>{id}</td>
-                                    })
-                                })
+                             enrollClass.map((item, i)=>{
+                               return <tr key={i}>
+                                        <td>{item.price}</td>
+                                        <td>{item.cartItem}</td>
+                                      </tr> 
+                             })
                             }
                         </tbody>
                     </table>

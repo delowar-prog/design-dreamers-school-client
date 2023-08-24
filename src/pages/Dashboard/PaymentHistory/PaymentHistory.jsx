@@ -1,14 +1,20 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import SectionTitleDeshboard from '../../../components/SectionTitle/SectionTitleDeshboard'
-import { AuthContext } from '../../../Provider/AuthProvider'
 import SinglePayment from './SinglePayment'
+import { Helmet } from 'react-helmet-async'
+import useAuth from '../../../hooks/useAuth'
 
 const PaymentHistory = () => {
-    const { user, loading } = useContext(AuthContext)
+    const { user, loading } = useAuth()
     const [payments, setPayments] = useState([])
-
+    const token= localStorage.getItem('access-token')
     useEffect(() => {
-        fetch(`https://summer-camp-fashion-design-server.vercel.app/payment/history/${user?.email}`)
+        fetch(`https://summer-camp-fashion-design-server.vercel.app/payment/${user?.email}`,{
+            method:'GET',
+            headers:{
+                authorization:`Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.length > 0) {
@@ -18,6 +24,7 @@ const PaymentHistory = () => {
     }, [])
   return (
     <Fragment>
+    <Helmet><title>SCFDS || Dashboard | Payment-History</title></Helmet>
             <div className='w-full'>
                 <SectionTitleDeshboard heading={'Payment History'} subHeading={''}></SectionTitleDeshboard>
             </div>

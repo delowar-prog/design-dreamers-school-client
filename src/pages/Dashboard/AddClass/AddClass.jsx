@@ -1,18 +1,17 @@
-import { Fragment, useContext } from 'react'
+import { Fragment } from 'react'
 import SectionTitleDeshboard from '../../../components/SectionTitle/SectionTitleDeshboard'
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../../Provider/AuthProvider';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
 const AddClass = () => {
-    const { user } = useContext(AuthContext)
-   
-    const [axiosSecure]=useAxiosSecure()
+    const { user } = useAuth()
+    const [axiosSecure] = useAxiosSecure()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const image_upload_token = import.meta.env.VITE_image_upload_key
     const img_upload_url = `https://api.imgbb.com/1/upload?key=${image_upload_token}`
+
     const onSubmit = data => {
-        console.log(data)
         const formData = new FormData()
         formData.append('image', data.image[0])
         fetch(img_upload_url, {
@@ -22,10 +21,10 @@ const AddClass = () => {
             .then(res => res.json())
             .then(resImg => {
                 if (resImg.success) {
-                    const { name, seats, price,} = data
+                    const { name, seats, price, } = data
                     const imgUrl = resImg.data.display_url
-                    const newClass = { name, instructor_name:user.displayName, email:user.email, available_seats:parseInt(seats), price: parseFloat(price), image: imgUrl }
-                          axiosSecure.post(`/classes`, newClass)
+                    const newClass = {name, instructor_name: user.displayName, email: user.email, available_seats: parseInt(seats), price: parseFloat(price), image: imgUrl }
+                    axiosSecure.post(`/classes`, newClass)
                         .then(data => {
                             if (data.data.insertedId) {
                                 Swal.fire({
@@ -35,8 +34,8 @@ const AddClass = () => {
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
-                              const addClassForm=document.getElementById('addClass')
-                              addClassForm.reset() 
+                                const addClassForm = document.getElementById('addClass')
+                                addClassForm.reset()
                             }
                         })
                 }
@@ -95,3 +94,5 @@ const AddClass = () => {
 }
 
 export default AddClass
+
+

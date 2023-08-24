@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query"
 import Swal from "sweetalert2"
 import ManageSingleClass from "./ManageSingleClass"
 import useAxiosSecure from "../../../hooks/useAxiosSecure"
+import { Helmet } from "react-helmet-async"
 
 
 const ManageClassses = () => {
@@ -17,6 +18,7 @@ const ManageClassses = () => {
     })
     return (
         <Fragment>
+        <Helmet><title>SCFDS || Dashboard | ManageClass</title></Helmet>
             <div className='w-full'>
                 <SectionTitleDeshboard heading={'Manage Classes'} subHeading={''}></SectionTitleDeshboard>
             </div>

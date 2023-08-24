@@ -1,29 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ContainerLayout from '../../components/Container/ContainerLayout'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import { Helmet } from 'react-helmet-async'
 import SingleClass from './SingleClass'
-import { AuthContext } from '../../provider/authProvider'
 import Swal from 'sweetalert2'
+import useAuth from '../../hooks/useAuth'
 
 
 const Classes = () => {
-  const [classes, setClasses]=useState([])
-  const {user}=useContext(AuthContext)
-  //load data
-  useEffect(()=>{
+  const [classes, setClasses] = useState([])
+  const { user } = useAuth()
+  useEffect(() => {
     fetch('https://summer-camp-fashion-design-server.vercel.app/classes')
-    .then(res=>res.json())
-    .then(data=>{
-      if(data.length>0){
-        setClasses(data)
-      }
-    })
-  },[])
+      .then(res => res.json())
+      .then(data => {
+        if (data.length > 0) {
+          setClasses(data)
+        }
+      })
+  }, [])
 
-  const handleSelectClass=(item)=>{
-    const {_id,image,name,price,instructor_name}=item
-    if(!user){
+  const handleSelectClass = (item) => {
+    const { _id, image, name, price, instructor_name } = item
+    if (!user) {
       Swal.fire({
         title: 'Login to select class',
         showClass: {
@@ -33,20 +32,20 @@ const Classes = () => {
           popup: 'animate__animated animate__fadeOutUp'
         }
       })
-    }else{
-        const selectedClass={classId:_id,image,name,instructor_name,price,email:user?.email} 
-        const token=localStorage.getItem('user_access_key')
-        fetch(`https://summer-camp-fashion-design-server.vercel.app/selected/classes`,{
-          method:'POST',
-          headers:{
-            'content-type':'Application/json',
-            authorization:`Bearer ${token}`
-          },
-          body:JSON.stringify(selectedClass) 
-        })
-        .then(res=>res.json())
-        .then(data=>{
-          if(data.insertedId){
+    } else {
+      const selectedClass = { classId: _id, image, name, instructor_name, price, email: user?.email }
+      const token = localStorage.getItem('access-token')
+      fetch(`https://summer-camp-fashion-design-server.vercel.app/selected/classes`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'Application/json',
+          authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(selectedClass)
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.insertedId) {
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -60,14 +59,14 @@ const Classes = () => {
     }
   }
   return (
-    <div className='bg-pink-600 pb-20'>
-    <Helmet><title>SCFDS || Classes</title></Helmet>
+    <div className='pb-20'>
+      <Helmet><title>SCFDS || Classes</title></Helmet>
       <SectionTitle heading={'Our all classes'} subHeading={'Visit to find your favorite classes'}></SectionTitle>
       <ContainerLayout>
-        <div className='grid grid-cols-3 gap-5'>
-        {
-          classes.map(item=><SingleClass key={item._id} item={item} handleSelectClass={handleSelectClass}></SingleClass>)
-        }
+        <div className='grid grid-cols-4 gap-5'>
+          {
+            classes.map(item => <SingleClass key={item._id} item={item} handleSelectClass={handleSelectClass}></SingleClass>)
+          }
         </div>
       </ContainerLayout>
     </div>
